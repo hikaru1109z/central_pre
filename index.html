@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Central Pre — Asegura tu vacante</title>
+<meta name="description" content="Todo tu material preuniversitario en un solo lugar: exámenes de admisión con solucionario, recursos por academia, videos, libros y flashcards de fórmulas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fc;--surface:#fff;--ink:#151b36;--mute:#5c6683;--line:#e0e4f0;--brand:#5b5be6;--brand-ink:#fff;--soft:#ecebff;--ok:#16a34a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1226;--surface:#171c38;--ink:#eef0fb;--mute:#a3acc6;--line:#2a3157;--brand:#8b8bff;--brand-ink:#0e1226;--soft:#232a54;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1226;--surface:#171c38;--ink:#eef0fb;--mute:#a3acc6;--line:#2a3157;--brand:#8b8bff;--brand-ink:#0e1226;--soft:#232a54;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:"Plus Jakarta Sans",Inter,sans-serif;letter-spacing:-.02em;line-height:1.1;margin:0}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+section>.wrap>h2{font-size:clamp(28px,4.5vw,40px);font-weight:800;max-width:18ch}
+.lead{color:var(--mute);max-width:60ch;margin:12px 0 32px}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none}
+.logo em{font-style:normal;color:var(--brand)}
+.mark{width:36px;height:36px;border-radius:11px;background:var(--brand);display:grid;place-items:center}
+nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto}
+nav a{padding:8px 12px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:500;color:var(--mute);white-space:nowrap}
+nav a:hover{background:var(--soft);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;border:0;background:var(--brand);color:var(--brand-ink);font-weight:600;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:hover{filter:brightness(1.08)}
+.hero{padding:72px 0 56px}
+.hero h1{font-size:clamp(40px,8vw,84px);font-weight:800;max-width:12ch}
+.hero h1 span{color:var(--brand)}
+.hero p{font-size:19px;color:var(--mute);max-width:52ch;margin:20px 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
+.stats b{display:block;font:800 32px "Plus Jakarta Sans",sans-serif}
+.stats span{color:var(--mute);font-size:14px}
+/* exámenes */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab{padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-weight:500;font-size:14px}
+.tab[aria-selected="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.rows{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:18px 22px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row h3{font-size:18px;font-weight:700;flex:1 1 260px}
+.row small{display:block;font:400 14px Inter;color:var(--mute);margin-top:4px;letter-spacing:0}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.pill{padding:8px 14px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;background:var(--soft);color:var(--ink)}
+.pill.main{background:var(--brand);color:var(--brand-ink)}
+.soon{color:var(--mute);font-size:14px;margin:16px 2px 0}
+/* academias */
+.split{display:grid;grid-template-columns:240px 1fr;gap:24px}
+.side{display:flex;flex-direction:column;gap:8px}
+.side .tab{text-align:left;border-radius:14px;padding:14px 16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.panel h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{padding:8px 14px;border-radius:999px;background:var(--soft);font-size:14px;font-weight:500}
+.pick{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 8px}
+.pick label{flex:1 1 150px}
+.course{padding:12px 18px;border-radius:12px;background:var(--brand);color:var(--brand-ink);font-weight:600;font-size:15px;text-decoration:none}
+.course:hover{filter:brightness(1.1)}
+.course.off{background:var(--soft);color:var(--mute);cursor:not-allowed}
+/* videos */
+.vids{display:grid;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.vid{display:flex;align-items:center;gap:16px;padding:16px 22px;border-top:1px solid var(--line);text-decoration:none}
+.vid:first-child{border-top:0}
+.vid:hover{background:var(--soft)}
+.play{width:40px;height:40px;border-radius:50%;background:var(--brand);display:grid;place-items:center;flex:none}
+.vid b{font:700 18px "Plus Jakarta Sans";display:block}
+.vid span{color:var(--mute);font-size:14px}
+.vid i{margin-left:auto;font-style:normal;font-weight:600;color:var(--brand);font-size:14px}
+/* flashcards */
+.fc-zone{display:flex;flex-direction:column;align-items:center;gap:20px}
+.fc{width:min(440px,100%);height:280px;perspective:1000px;background:none;border:0;padding:0}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fc.on .fc-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:center;text-align:left}
+.front{background:var(--surface);border:1.5px solid var(--line)}
+.back{background:var(--brand);color:var(--brand-ink);transform:rotateY(180deg)}
+.face small{font-weight:600;opacity:.75}
+.face h3{font-size:34px;font-weight:800;margin:6px 0}
+.face .f{font:700 28px "Plus Jakarta Sans";margin:8px 0}
+.face p{margin:0;opacity:.85}
+/* comunidad */
+.cols{display:grid;grid-template-columns:5fr 6fr;gap:24px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{font:inherit;padding:11px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:84px;resize:vertical}
+.msg{font-size:14px;color:var(--ok);min-height:20px;margin:0}
+.msg.err{color:#dc2626}
+.feed{display:grid;gap:12px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.post header{all:unset;display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--soft);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:13px}
+.post h3{font-size:17px;font-weight:700}
+.post p{margin:4px 0 0;color:var(--mute);font-size:15px}
+.tag{margin-left:auto;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--soft)}
+/* plan */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px}
+.plan{border:1.5px solid var(--line);border-radius:20px;padding:28px;background:var(--surface)}
+.plan.pro{border-color:var(--brand);box-shadow:0 0 0 4px var(--soft)}
+.plan h3{font-size:20px;font-weight:800}
+.plan .price{font:800 40px "Plus Jakarta Sans";margin:10px 0}
+.plan .price small{font:500 15px Inter;color:var(--mute)}
+.plan ul{padding-left:18px;margin:12px 0 0;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
+footer p{max-width:46ch;margin:8px 0 0}
+@media (max-width:760px){.split,.cols,.plans{grid-template-columns:1fr}.side{flex-direction:row;flex-wrap:wrap}section{padding:52px 0}header .wrap{gap:10px}.logo span.t{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fc-in{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#inicio" aria-label="Central Pre, inicio">
+    <span class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z" fill="#fff"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></svg></span>
+    <span class="t">Central<em>Pre</em></span>
+  </a>
+  <nav aria-label="Secciones">
+    <a href="#examenes">Exámenes</a><a href="#recursos">Recursos</a><a href="#videos">Videos</a><a href="#biblioteca">Biblioteca</a><a href="#flashcards">Flashcards</a><a href="#comunidad">Comunidad</a>
+  </nav>
+</div></header>
+
+<main id="inicio">
+<div class="hero"><div class="wrap">
+  <h1>Asegura tu <span>vacante.</span></h1>
+  <p>Todo tu material preuniversitario en un solo lugar: exámenes de admisión con solucionario, recursos por academia, videos y fórmulas para repasar antes de rendir.</p>
+  <div class="cta"><a class="btn" href="#examenes">Ver exámenes</a><a class="btn ghost" href="#flashcards">Repasar fórmulas</a></div>
+  <div class="stats">
+    <div><b data-n="120">0</b><span>materiales</span></div>
+    <div><b data-n="60">0</b><span>fórmulas</span></div>
+    <div><b data-n="500">0</b><span>estudiantes</span></div>
+    <div><b data-n="6">0</b><span>universidades</span></div>
+  </div>
+</div></div>
+
+<section id="examenes"><div class="wrap">
+  <h2>Exámenes de admisión</h2>
+  <p class="lead">Elige la universidad y descarga el examen con su solucionario.</p>
+  <div class="tabs" role="tablist" id="uni-tabs"></div>
+  <div class="rows" id="exam-rows"></div>
+  <p class="soon" id="exam-soon"></p>
+</div></section>
+
+<section id="recursos" style="background:var(--surface)"><div class="wrap">
+  <h2>Material por academia</h2>
+  <p class="lead">Selecciona una academia para ver sus cursos y pizarras virtuales.</p>
+  <div class="split"><div class="side" id="acad-tabs" role="tablist"></div><div class="panel" id="acad-panel"></div></div>
+</div></section>
+
+<section id="videos"><div class="wrap">
+  <h2>Videos por curso</h2>
+  <p class="lead">Listas de YouTube ordenadas por curso, sin mezclar universidades.</p>
+  <div class="vids" id="vids"></div>
+</div></section>
+
+<section id="biblioteca" style="background:var(--surface)"><div class="wrap">
+  <h2>Biblioteca digital</h2>
+  <p class="lead">Libros por editorial, en un solo lugar y sin gastar en impresos.</p>
+  <div class="split"><div class="side" id="ed-tabs" role="tablist"></div><div class="panel" id="ed-panel"></div></div>
+</div></section>
+
+<section id="flashcards"><div class="wrap">
+  <h2>Fórmula Express</h2>
+  <p class="lead">Toca la tarjeta para ver la fórmula con un ejemplo.</p>
+  <div class="fc-zone">
+    <button class="fc" id="fc" aria-label="Tarjeta de fórmula. Toca para girar"><div class="fc-in">
+      <div class="face front"><small id="fc-course"></small><h3 id="fc-title"></h3><p id="fc-sub"></p><small style="margin-top:18px">Toca para ver la fórmula</small></div>
+      <div class="face back"><small>Fórmula</small><div class="f" id="fc-f"></div><p id="fc-ex"></p></div>
+    </div></button>
+    <button class="btn ghost" id="fc-next">Otra fórmula</button>
+  </div>
+</div></section>
+
+<section id="comunidad" style="background:var(--surface)"><div class="wrap">
+  <h2>Aportes de la comunidad</h2>
+  <p class="lead">Comparte tus mejores apuntes y aprende de otros postulantes.</p>
+  <div class="cols">
+    <form id="form" novalidate>
+      <label>Nombre<input name="name" autocomplete="given-name" placeholder="Tu nombre"></label>
+      <label>Curso<input name="course" placeholder="Ej. Álgebra"></label>
+      <label>Título<input name="title" placeholder="Ej. Resumen de exponentes"></label>
+      <label>Descripción<textarea name="desc" placeholder="¿Qué incluye tu aporte?"></textarea></label>
+      <label>Categoría<select name="cat"><option>PDF</option><option>Resumen</option></select></label>
+      <button class="btn" type="submit">Compartir material</button>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+    <div class="feed" id="feed"></div>
+  </div>
+</div></section>
+
+<section id="planes"><div class="wrap">
+  <h2>Empieza gratis, mejora cuando quieras</h2>
+  <p class="lead">El plan Premium es opcional y se paga con Yape o Plin.</p>
+  <div class="plans">
+    <div class="plan"><h3>Gratis</h3><div class="price">S/ 0</div><ul><li>Exámenes pasados con solucionario</li><li>Flashcards de fórmulas</li><li>Aportes de la comunidad</li></ul></div>
+    <div class="plan pro"><h3>Premium</h3><div class="price">S/ 10<small> al mes</small></div><ul><li>Todo lo del plan gratis</li><li>Material exclusivo</li><li>Funciones extra</li></ul></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><a class="logo" href="#inicio">Central<em>Pre</em></a><p>Plataforma digital para ordenar tu preparación: apuntes, fórmulas, simulacros y recursos colaborativos para los exámenes de admisión de universidades peruanas.</p></div>
+  <div>UNI · UNMSM · PUCP · UNFV · UNAC · La Agraria<p>© 2026 Central Pre. Aprende. Organiza. Ingresa.</p></div>
+</div></footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.textContent=h;return e};
+
+/* contadores */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const n=+e.target.dataset.n;let i=0;const t=setInterval(()=>{i+=Math.ceil(n/40);if(i>=n){i=n;clearInterval(t)}e.target.textContent="+"+i},30)}));
+document.querySelectorAll("[data-n]").forEach(b=>io.observe(b));
+
+/* pestañas genéricas */
+function tabs(box,items,cb){box.innerHTML="";items.forEach((it,i)=>{const b=el("button","tab",it.label);b.setAttribute("role","tab");b.onclick=()=>{[...box.children].forEach(c=>c.setAttribute("aria-selected","false"));b.setAttribute("aria-selected","true");cb(it)};box.appendChild(b);if(i===0)b.click()})}
+
+/* exámenes */
+const D="https://drive.google.com/file/d/";
+const unis=[
+ {label:"UNI",rows:[
+  ["Bloque A: Aptitud Académica y Humanidades",D+"1thbOyN2Vi3AK1-8_XPFq9IlNN1SGwCwX/view?usp=sharing",D+"1x8mbuAqu10S1K9BlZYHTSq_9Ab5KPXAS/view?usp=drive_link"],
+  ["Bloque B: Matemáticas",D+"17bIUGZzVufarb2SYBXVeBG2188IMYzqQ/view?usp=sharing",D+"1OPJAfmWL6wkuGVxQNFZSR-RDlM4yR1Jc/view?usp=drive_link"],
+  ["Bloque C: Física y Química",D+"1ila5CefjNhPCAY9jXKbcfzRq79_eE7z-/view?usp=sharing",D+"1g6C4wTdXblqSgNxVnrW24TuHBnf14QMh/view?usp=drive_link"]],sub:"Examen de admisión UNI 2026-I, dividido por días según el formato real."},
+ {label:"UNMSM"},{label:"PUCP"},{label:"UNFV"},{label:"UNAC"},{label:"La Agraria"}];
+tabs($("#uni-tabs"),unis,u=>{const box=$("#exam-rows");box.innerHTML="";const s=$("#exam-soon");
+ if(!u.rows){s.textContent="Los exámenes de "+u.label+" se están organizando por año y curso. Muy pronto.";box.hidden=true;return}
+ box.hidden=false;s.textContent="";
+ u.rows.forEach(r=>{const row=el("div","row");const h=el("h3",null,r[0]);h.appendChild(el("small",null,u.sub));const l=el("div","links");
+  [["Ver examen",r[1],"pill main"],["Ver solucionario",r[2],"pill"]].forEach(x=>{const a=el("a",x[2],x[0]);a.href=x[1];a.target="_blank";a.rel="noopener";l.appendChild(a)});
+  row.append(h,l);box.appendChild(row)})});
+
+/* academias y editoriales */
+function split(tabBox,panel,data,unit){tabs(tabBox,data,d=>{panel.innerHTML="";panel.appendChild(el("h3",null,d.label));panel.appendChild(el("p","lead",d.items.length+" "+unit+" disponibles"));const c=el("div","chips");d.items.forEach(i=>c.appendChild(el("span","chip",i)));panel.appendChild(c)})}
+/* Material del Drive: Academia > Año > Ciclo > Curso = enlace de la carpeta.
+   Cambia cada mk(...) por el JSON real (ver instrucciones). Curso con "" = enlace pendiente. */
+const mk=(ys,cs,ks)=>Object.fromEntries(ys.map(y=>[y,Object.fromEntries(cs.map(c=>[c,Object.fromEntries(ks.map(k=>[k,""]))]))]));
+const F="https://drive.google.com/drive/folders/",G="https://drive.google.com/file/d/",fl=o=>Object.fromEntries(Object.entries(o).map(([k,v])=>[k,F+v]));
+const MATERIAL={
+ "CEPRE-UNI":mk(["2026","2025"],["Ciclo Básico","Ciclo Intermedio","Ciclo Avanzado"],["Álgebra","Aritmética","Física","Química","Trigonometría"]),
+ "Academia César Vallejo":{"2025":{
+  "Anual CV 2025":fl({"Trigonometría":"1Tk7vCT7lnBAsBbT0wQawr_RtIMHhlHcF","Geometría":"10xmqqZkNRpiLQD8sZyVuQmgqdG-LLtRM","Simulacros":"1nXe2vLWDGu8A02OasC4pzFM3vVx3P-_W","Geografía":"1vSXbRztht7ZEnnWS7_bSP133cWbPIXDX","Filosofía y Lógica":"1YMcDC_3Poow-cd1yR9QJpui8i-wY89wK","Aritmética":"1mRcWQSQpQUXcnf38y_QJLxD3OIIOidi-","Álgebra":"1defVVGcvcPn4y9H-iUEID1Tr7O_-tgDP","Raz. Matemático":"1JGTOTCNyi5M4koValnbdAVWJOQjGqPp8","Raz. Verbal":"10punZtvvwvknf5-d4_wYx6NzUWxKq3qZ","Historia":"1O6xax-XKAUd7G49_bNyN-j_nx8fldy9S","Economía y Cívica":"1rgMmNVLrfHP4IkCJeNDnoKO9VCCyNZFp","Química":"1WAAnRkbXbPSKxMzb1DDE-YuTKwVwf2On","Inglés":"1oNx4mJWw3O5z15PW4eLZWha9DnvJOrVO","Seminarios":"1qngsl4hNR7IAn3zwF6aH2p4R3-6Tu_Ly","Lenguaje y Literatura":"1mev28GH3nkvle8brWUvAhhLx6h7ekia6","Psicología":"1Zt2RJjWguZHuybKO1BBVebKGdZhJSdAO","Física":"1fULOkTQaoyfd8GSgNNx-oavhQLmTIkNN"}),
+  "Repaso UNI 2025":fl({"Psicología":"1GgPl3H4Ys6OPYsGLzhRBiZFs1m73ddxm","Lenguaje y Literatura":"1qZlO_mydYPHrvqyN9iO9hd4rbFg7aRkV","Geometría":"1ZXbUV4AIXbRdl8jBQ5P0q2UDWaizxl5L","Inglés":"1K58B2ftKlq_CE08DUyTPzirgo4Bx0TCa","Clases 🎥":"1Vy-VGQEktpP3G68soF0U9xFGZt-F8WXn","Historia":"1AQY7idR6ItxSIdtsmJsV5aseYjmz_ueo","Filosofía y Lógica":"1auAVqaEJ0hreq2nRsdQX7Gmze2q3jyV1","Geografía":"1F6wTwxA9gAYJrnhS6qB3ncK0eHVydgnm","Trigonometría":"1vQ8trQunBT1Em2jBDTnP9lJcC-a4TaLh","Claves":"180IjmYMLDXV5KdyK-J1KINaHgq3gUgwR","Economía y Cívica":"1j8I3t8qkHDMr1V3F7a8C9784zERJFXs9","Álgebra":"1cz2sJIpEoazan6fV-Ry-kL7NVwLM72vo","Raz. Verbal":"1uzMaXJ_NMjR92xwVyyKizrPSCl_UZIOy","Física":"1UoLQja7xQuSEsXT-LZyaFPFAfF0d0OCs","Aritmética":"1Xi7wGwuEXX87OlCg_7m4o8qFOtqBzE4Q","Química":"1xVmYxcdIyj82ur_SP6jEfQeooDy4bW1A","Raz. Matemático":"13sODlmQ8aRYIga5CSQW5ZYRR4Dkrf4uz"})}},
+ "Academia ADUNI":mk(["2026","2025"],["Ciclo Anual","Ciclo Semestral"],["Física","Química","Geometría"])};
+tabs($("#acad-tabs"),Object.keys(MATERIAL).map(k=>({label:k})),a=>{
+ const p=$("#acad-panel"),data=MATERIAL[a.label],ys=Object.keys(data);p.innerHTML="";p.appendChild(el("h3",null,a.label));
+ p.appendChild(el("p","lead","Elige el año y el ciclo para ver los cursos."));
+ const sel=(t,o)=>{const l=el("label",null,t),s=el("select");o.forEach(x=>s.add(new Option(x,x)));l.appendChild(s);return[l,s]};
+ const[ly,sy]=sel("Año",ys),[lc,sc]=sel("Ciclo",Object.keys(data[ys[0]])),out=el("div","chips"),bar=el("div","pick");
+ const draw=()=>{out.innerHTML="";Object.entries(data[sy.value][sc.value]||{}).sort((a,b)=>a[0].localeCompare(b[0],"es")).forEach(([n,u])=>{const b=el(u?"a":"span","course"+(u?"":" off"),n);if(u){b.href=u;b.target="_blank";b.rel="noopener"}else{b.title="Enlace pendiente";b.setAttribute("aria-disabled","true")}out.appendChild(b)})};
+ sy.onchange=()=>{sc.innerHTML="";Object.keys(data[sy.value]).forEach(c=>sc.add(new Option(c,c)));draw()};
+ sc.onchange=draw;bar.append(ly,lc);p.append(bar,out);draw()});
+/* Biblioteca: Editorial > Colección > [curso, páginas, enlace]. Enlace "" = pendiente. */
+const LIB={
+ "Editorial Lumbreras":{"Colección Ciencias y Humanidades":[["Aritmética",857,G+"1Rhx-V8Bf7UaU6k_U3MUJk4pu3cXMq_Cu/view?usp=drivesdk"],["Geometría del espacio",0,G+"1DsQa1E1O4CJGLbBjOf23Nw5_vcR_HuK8/view?usp=drivesdk"],["Geometría plana",842,""],["Trigonometría",823,G+"1cB2n5CIl-L-FAeGrwQHXthM-P-3SN-42/view?usp=drivesdk"]]},
+ "Editorial Cuzcano":{"Colección":[["Álgebra",0,""],["Geometría",0,""],["Trigonometría",0,""]]},
+ "Otras editoriales":{"Colección":[["Razonamiento Matemático",0,""],["Lenguaje",0,""],["Historia del Perú",0,""]]}};
+tabs($("#ed-tabs"),Object.keys(LIB).map(k=>({label:k})),e=>{const p=$("#ed-panel");p.innerHTML="";p.appendChild(el("h3",null,e.label));
+ Object.entries(LIB[e.label]).forEach(([col,bs])=>{const h=el("p",null,col);h.style.cssText="color:var(--mute);margin:8px 0 0";p.appendChild(h);const out=el("div","chips");
+  bs.forEach(([n,pg,u])=>{const b=el(u?"a":"span","course"+(u?"":" off"),n+(pg?" · "+pg+" pág.":""));if(u){b.href=u;b.target="_blank";b.rel="noopener"}else{b.title="Enlace pendiente";b.setAttribute("aria-disabled","true")}out.appendChild(b)});p.appendChild(out)})});
+
+/* videos */
+const YT="https://www.youtube.com/playlist?list=";
+[["Álgebra","75 videos · San Marcos · Academia Grupo Ciencias",YT+"PLLiqnnM197D-XqeHehec4YfRHXGZXqf6b"],
+ ["Aritmética","65 videos · San Marcos · Academia Grupo Ciencias",YT+"PLLiqnnM197D-Ax9i4SmpXLW07ePTQ8xOx"],
+ ["Trigonometría","44 videos · San Marcos · Academia Grupo Ciencias",YT+"PLLiqnnM197D_721lHX8LobdDAKngjVMR9"],
+ ["Razonamiento Matemático","83 videos · San Marcos · Academia Grupo Ciencias",YT+"PLLiqnnM197D-68yiQdGDUi2lCRq9tQxVM"],
+ ["Física (teoría)","19 videos · UNI · Física PRE",YT+"PLBlRc2CZXIpP93yAEt_vCOjH2zi9Xiuk8"]].forEach(v=>{
+ const a=el("a","vid");a.href=v[2];a.target="_blank";a.rel="noopener";a.innerHTML='<span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><div><b></b><span></span></div><i>Ver lista</i>';
+ $("b",a).textContent=v[0];$("span:not(.play)",a).textContent=v[1];$("#vids").appendChild(a)});
+
+/* flashcards */
+const cards=[
+ ["Física","MRU","Movimiento rectilíneo uniforme","d = v · t","Ej: v = 10 m/s, t = 5 s → d = 50 m"],
+ ["Física","MRUV","Velocidad final","vf = vi + a · t","Ej: vi = 0, a = 2, t = 3 → vf = 6 m/s"],
+ ["Física","Ley de Ohm","Voltaje y corriente","V = I · R","Ej: I = 2 A, R = 5 Ω → V = 10 V"],
+ ["Álgebra","Binomio al cuadrado","Producto notable","(a+b)² = a² + 2ab + b²","Ej: (x+3)² = x² + 6x + 9"],
+ ["Álgebra","Diferencia de cuadrados","Producto notable","a² − b² = (a+b)(a−b)","Ej: x² − 9 = (x+3)(x−3)"],
+ ["Geometría","Área del círculo","Radio r","A = π · r²","Ej: r = 3 → A = 9π"]];
+let ci=0;const fc=$("#fc");
+function show(i){const was=fc.classList.contains("on");fc.classList.remove("on");const c=cards[i];setTimeout(()=>{$("#fc-course").textContent=c[0];$("#fc-title").textContent=c[1];$("#fc-sub").textContent=c[2];$("#fc-f").textContent=c[3];$("#fc-ex").textContent=c[4]},was?300:0)}
+fc.onclick=()=>fc.classList.toggle("on");
+$("#fc-next").onclick=()=>{let n;do{n=Math.floor(Math.random()*cards.length)}while(n===ci);ci=n;show(ci)};
+show(0);
+
+/* comunidad */
+const posts=[["María Fernández","Hace 2 horas","Álgebra","Resumen de ecuaciones cuadráticas","Fórmulas y 20 ejercicios resueltos paso a paso.","PDF"],
+ ["Diego Ramírez","Ayer","Historia","Línea de tiempo: Perú republicano","Infografía con los hitos principales de 1821 a 1980.","Resumen"],
+ ["Ana Torres","Hace 3 días","Química","Tabla periódica anotada","Configuración electrónica y propiedades destacadas.","PDF"]];
+function addPost(p,top){const d=el("article","post");const h=el("header");const av=el("span","av",p[0].split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase());
+ const w=el("div");w.append(el("b",null,p[0]),el("br"),el("small",null,p[1]+" · "+p[2]));h.append(av,w,el("span","tag",p[5]));
+ d.append(h,el("h3",null,p[3]),el("p",null,p[4]));top?$("#feed").prepend(d):$("#feed").appendChild(d)}
+posts.forEach(p=>addPost(p));
+$("#form").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),m=$("#msg"),g=k=>(f.get(k)||"").toString().trim();
+ if(g("name").length<2||g("course").length<2||g("title").length<3||g("desc").length<10){m.className="msg err";m.textContent="Completa todos los campos. La descripción necesita al menos 10 caracteres.";return}
+ addPost([g("name"),"Ahora mismo",g("course"),g("title"),g("desc"),g("cat")],true);e.target.reset();m.className="msg";m.textContent="Material compartido."};
+</script>
+</body>
+</html>
